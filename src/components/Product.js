@@ -3,7 +3,7 @@ import React,{ useState,useEffect } from 'react'
 import {useDispatch } from 'react-redux';
 import { addToBasket } from '../slices/basketSlice';
 
-function Product({id, name, description, isVeg,rating, price, size,toppings, img_url}) {
+function Product({key, name, description, isVeg,rating, price, size,toppings, img_url}) {
 
   const dispatch = useDispatch(); 
   const rate=[rating]
@@ -30,10 +30,10 @@ function Product({id, name, description, isVeg,rating, price, size,toppings, img
       {popup && <div className='absolute top-3/4 left-3/4 bg-blue-500 z-20 p-10'>
         <div className='flex justify-center m-4'>
           {size.map((size)=>(
-            <div className='p-3 m-4 flex flex-col justify-center items-center'>
+            <div key={key} className='p-3 m-4 flex flex-col justify-center items-center'>
               <h1 className='text-center font-bold text-xl'>{size.title}</h1>
               {size.items.map((item)=>(
-                <div>
+                <div key={key}>
                  <label>
                    <input className='flex'type="radio" value={item.size} checked={selectedOption === item.size} onChange={handleOptionChange} />
                    {item.size}
@@ -43,12 +43,12 @@ function Product({id, name, description, isVeg,rating, price, size,toppings, img
               </div>
           ))}
            {toppings.map((toppings)=>(
-             <div className='flex flex-col justify-center items-center'>
+             <div key={key}className='flex flex-col justify-center items-center'>
               <h1 className='text-center font-bold text-xl'>{toppings.title}</h1>
                 <div>
                   {toppings.items.map((items)=>(
                     
-                 <label>
+                 <label key={key}>
                    <input className='flex' type="radio" value={items.name} checked={toppigSelectedOption === items.name} onChange={handleToppingsOptionChange} />
                    {items.name}
                  </label>
