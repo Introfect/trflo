@@ -9,7 +9,7 @@ function Product({key, name, description, isVeg,rating, price, size,toppings, im
   const rate=[rating]
   const addItemToBasket = () => {
     const product = {
-      id, name, description, isVeg,rating, price, size,toppings, img_url, selectedOption,toppigSelectedOption
+      key, name, description, isVeg,rating, price, size,toppings, img_url, selectedOption,toppigSelectedOption
     };
     // Sending the product as an action to the REDUX store... the basket slice
     dispatch(addToBasket(product));
@@ -67,7 +67,7 @@ function Product({key, name, description, isVeg,rating, price, size,toppings, im
       </div>
       </div>}
       </div>
-    <div key={id} className='flex-col border-2 rounded-lg m-5 bg-white p-10'>
+    <div key={key} className='flex-col border-2 rounded-lg m-5 bg-white p-10'>
 
         
 
